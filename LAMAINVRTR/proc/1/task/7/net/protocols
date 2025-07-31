@@ -1,0 +1,17 @@
+protocol  size sockets  memory press maxhdr  slab module     cl co di ac io in de sh ss gs se re bi br ha uh gp em
+AF_VSOCK  1232      0      -1   NI       0   yes  kernel      y  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n
+PACKET    1536      0      -1   NI       0   no   kernel      n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n
+PINGv6    1200      0      -1   NI       0   yes  kernel      y  y  y  n  n  y  n  n  y  y  y  y  y  y  y  y  y  n
+RAWv6     1200      0      -1   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  y  y  y  y  n  n
+UDPLITEv6 1344      0     256   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  n  n  y  y  y  n
+UDPv6     1344      0     256   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  n  n  y  y  y  n
+TCPv6     2560      3       0   no     192   yes  kernel      y  y  y  y  y  y  y  y  y  y  y  y  n  y  y  y  y  y
+ALG        808      0      -1   NI       0   no   kernel      n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n
+UNIX-STREAM 1024    121      -1   NI       0   yes  kernel      y  n  n  n  n  n  n  n  n  n  n  n  n  n  n  y  n  n
+UNIX      1024     30      -1   NI       0   yes  kernel      y  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n
+UDP-Lite  1152      0     256   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  n  n  y  y  y  n
+PING       992      0      -1   NI       0   yes  kernel      y  y  y  n  n  y  n  n  y  y  y  y  y  y  y  y  y  n
+RAW       1000      0      -1   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  y  y  y  y  n  n
+UDP       1152      0     256   NI       0   yes  kernel      y  y  y  n  y  y  y  n  y  y  y  y  n  n  y  y  y  n
+TCP       2368      9       0   no     192   yes  kernel      y  y  y  y  y  y  y  y  y  y  y  y  n  y  y  y  y  y
+NETLINK   1088     15      -1   NI       0   no   kernel      n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n  n

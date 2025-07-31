@@ -1,0 +1,21 @@
+Basic info: size of leaf: 48 bytes, size of tnode: 40 bytes.
+Main:
+	Aver depth:     3.10
+	Max depth:      4
+	Leaves:         10
+	Prefixes:       10
+	Internal nodes: 8
+	  1: 2  2: 5  3: 1
+	Pointers: 32
+Null ptrs: 15
+Total size: 2  kB
+Local:
+	Aver depth:     3.10
+	Max depth:      4
+	Leaves:         10
+	Prefixes:       10
+	Internal nodes: 8
+	  1: 2  2: 5  3: 1
+	Pointers: 32
+Null ptrs: 15
+Total size: 2  kB

@@ -1,0 +1,12 @@
+pos:	0
+flags:	02000002
+mnt_id:	16
+ino:	31
+tfd:       24 events:       19 data:               18  pos:0 ino:1c3d sdev:9
+tfd:       22 events:       19 data:               16  pos:0 ino:1c3b sdev:9
+tfd:       18 events:       19 data:               12  pos:0 ino:136c sdev:9
+tfd:       23 events:       19 data:               17  pos:0 ino:2b7a sdev:9
+tfd:       16 events:       19 data:               10  pos:0 ino:1f sdev:f
+tfd:       14 events:       19 data:                e  pos:0 ino:135f sdev:e
+tfd:       21 events:       19 data:               15  pos:0 ino:2d32 sdev:9
+tfd:       19 events:       19 data:               13  pos:0 ino:2eff sdev:9
