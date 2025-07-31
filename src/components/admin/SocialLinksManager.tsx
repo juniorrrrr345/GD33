@@ -108,6 +108,9 @@ export default function SocialLinksManager() {
           
           // Recharger les données
           loadSocialLinks();
+          
+          // Émettre un événement pour mise à jour instantanée
+          window.dispatchEvent(new CustomEvent('socialLinksUpdated'));
 
       } else {
         const error = await response.json();
