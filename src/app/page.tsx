@@ -24,6 +24,7 @@ export default function HomePage() {
   
   // États pour les données - Initialiser avec des valeurs par défaut
   const [loading, setLoading] = useState(true); // Toujours true au départ
+  const [backgroundImage, setBackgroundImage] = useState<string>('');
   
   // Gérer la logique de première visite côté client uniquement
   useEffect(() => {
@@ -36,6 +37,19 @@ export default function HomePage() {
       // Si première visite, marquer comme visité
       sessionStorage.setItem('hasVisited', 'true');
     }
+    
+    // Charger l'image de fond depuis localStorage si elle existe
+    const savedSettings = localStorage.getItem('shopSettings');
+    if (savedSettings) {
+      try {
+        const settings = JSON.parse(savedSettings);
+        if (settings.backgroundImage) {
+          setBackgroundImage(settings.backgroundImage);
+        }
+      } catch (error) {
+        console.error('Erreur parsing settings:', error);
+      }
+    }
   }, []); // Ne s'exécute qu'une fois au montage
   
   // Charger le thème depuis l'API au démarrage
@@ -46,6 +60,11 @@ export default function HomePage() {
         const settingsRes = await fetch('/api/settings', { cache: 'no-store' });
         if (settingsRes.ok) {
           const settings = await settingsRes.json();
+          
+          // Sauvegarder l'image de fond pour le loading
+          if (settings.backgroundImage) {
+            setBackgroundImage(settings.backgroundImage);
+          }
           
           // Sauvegarder dans localStorage pour les prochaines visites
           localStorage.setItem('shopSettings', JSON.stringify(settings));
@@ -247,14 +266,14 @@ export default function HomePage() {
               {/* Cercle animé avec image de fond */}
               <div className="w-48 h-48 mx-auto mb-8 relative animate-float">
                 <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-                  {settings?.backgroundImage && (
+                  {backgroundImage && (
                     <img 
-                      src={settings.backgroundImage} 
+                      src={backgroundImage} 
                       alt="Background" 
                       className="w-full h-full object-cover"
                     />
                   )}
-                  {!settings?.backgroundImage && (
+                  {!backgroundImage && (
                     <div className="w-full h-full bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600"></div>
                   )}
                 </div>
