@@ -28,17 +28,7 @@ export default function HomePage() {
   
   // Gérer la logique de première visite côté client uniquement
   useEffect(() => {
-    // Vérifier si c'est la première visite
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    if (hasVisited) {
-      // Si déjà visité, cacher le chargement immédiatement
-      setLoading(false);
-    } else {
-      // Si première visite, marquer comme visité
-      sessionStorage.setItem('hasVisited', 'true');
-    }
-    
-    // Charger l'image de fond depuis localStorage si elle existe
+    // Charger immédiatement l'image de fond et le nom depuis localStorage
     const savedSettings = localStorage.getItem('shopSettings');
     if (savedSettings) {
       try {
@@ -49,6 +39,20 @@ export default function HomePage() {
       } catch (error) {
         console.error('Erreur parsing settings:', error);
       }
+    }
+    
+    // Vérifier si c'est la première visite
+    const hasVisited = sessionStorage.getItem('hasVisited');
+    if (hasVisited) {
+      // Si déjà visité, cacher le chargement immédiatement
+      setLoading(false);
+    } else {
+      // Si première visite, marquer comme visité
+      sessionStorage.setItem('hasVisited', 'true');
+      // Réduire le temps de chargement à 3 secondes
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
     }
   }, []); // Ne s'exécute qu'une fois au montage
   
@@ -170,10 +174,10 @@ export default function HomePage() {
     
     loadFreshData();
     
-    // Cacher le chargement après un délai plus long pour être sûr qu'il soit visible
+    // Cacher le chargement après un délai court
     const loadingTimeout = setTimeout(() => {
       setLoading(false);
-    }, 7000); // 7 secondes pour bien voir le chargement
+    }, 3000); // 3 secondes maximum
     
     // Rafraîchir les données toutes les secondes pour synchronisation temps réel
     const interval = setInterval(() => {
@@ -243,21 +247,14 @@ export default function HomePage() {
         <div className="content-layer">
           <div className="min-h-screen flex items-center justify-center p-4">
             <div className="text-center bg-black/60 backdrop-blur-md rounded-3xl p-8 sm:p-12 max-w-lg mx-auto border border-white/20">
-              {/* Logo animé moderne */}
+              {/* Logo/Nom de la boutique */}
               <div className="mb-8">
-                <div className="relative w-40 h-40 mx-auto">
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-70 animate-pulse"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-xl opacity-50 animate-ping"></div>
-                  <div className="relative z-10 w-full h-full flex items-center justify-center">
-                    <span className="text-8xl animate-bounce filter drop-shadow-2xl">🔥</span>
-                  </div>
-                </div>
+                <h1 className="text-6xl sm:text-8xl font-black text-white drop-shadow-2xl animate-pulse">
+                  THEGD.33
+                </h1>
               </div>
               
-              {/* Titre avec effet néon et ombre */}
-              <h1 className="text-5xl sm:text-7xl font-black mb-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text animate-pulse drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-                THEGD.33
-              </h1>
+
               
               <p className="text-2xl text-white mb-8 font-semibold drop-shadow-lg">
                 Préparation en cours...
