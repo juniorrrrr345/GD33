@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
-// Redéploiement forcé - Nouveau chargement JBEL INDUSTRY
+// Redéploiement forcé - Nouveau chargement THEGD33
 import CategoryFilter from '../components/CategoryFilter';
 import ProductCard, { Product } from '../components/ProductCard';
 import ProductDetail from '../components/ProductDetail';

@@ -31,7 +31,7 @@ export default function TestLoading() {
             </div>
             
             <h1 className="text-5xl sm:text-7xl font-black mb-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text animate-pulse">
-              JBEL INDUSTRY
+              THEGD33
             </h1>
             
             <p className="text-2xl text-white/90 mb-8 font-light">

@@ -7,14 +7,14 @@ import GlobalBackgroundProvider from '@/components/GlobalBackgroundProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'JBEL INDUSTRY - Boutique en ligne',
-  description: 'JBEL INDUSTRY - Votre boutique en ligne. Produits de qualité et livraison rapide.',
+  title: 'THEGD33 - Boutique en ligne',
+  description: 'THEGD33 - Votre boutique en ligne. Produits de qualité et livraison rapide.',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
   themeColor: '#000000',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'JBEL INDUSTRY'
+    title: 'THEGD33'
   },
   formatDetection: {
     telephone: false

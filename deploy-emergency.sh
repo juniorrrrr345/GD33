@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script de déploiement d'urgence pour Vercel
-echo "🚀 Déploiement d'urgence JBEL INDUSTRY"
+echo "🚀 Déploiement d'urgence THEGD33"
 
 # Vérifier que nous sommes sur main
 git checkout main

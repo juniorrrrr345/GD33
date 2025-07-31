@@ -1,4 +1,4 @@
-# JBEL INDUSTRY Shop - Boutique E-commerce Moderne
+# THEGD33 Shop - Boutique E-commerce Moderne
 
 <!-- Deploy: 2025-01-29 20:16 - NOUVEAU CHARGEMENT MODERNE ACTIVÉ -->
 
@@ -6,7 +6,7 @@ Une boutique e-commerce moderne et élégante avec panel d'administration comple
 
 ## 🚀 Nouveau Chargement Moderne
 - Logo animé ⚡
-- Titre "JBEL INDUSTRY"
+- Titre "THEGD33"
 - Barre de progression colorée
 - Fond sans écran noir
 

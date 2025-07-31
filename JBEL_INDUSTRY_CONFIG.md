@@ -1,4 +1,4 @@
-# 🏭 JBEL INDUSTRY - Configuration Complète
+# 🏭 THEGD33 - Configuration Complète
 
 ## ✅ Fonctionnalités Configurées
 
@@ -20,7 +20,7 @@
 - ✅ **Paramètres** : Personnalisation complète de la boutique
 
 ### 4. 🎨 Personnalisation
-- ✅ Nom de la boutique : **JBEL INDUSTRY**
+- ✅ Nom de la boutique : **THEGD33**
 - ✅ Thème personnalisable
 - ✅ Image de fond configurable
 - ✅ Textes et messages personnalisables
@@ -140,4 +140,4 @@ NEXTAUTH_URL=https://lamainvrtr.vercel.app
 
 ---
 
-🎉 **JBEL INDUSTRY est maintenant complètement configuré et opérationnel !**
+🎉 **THEGD33 est maintenant complètement configuré et opérationnel !**
