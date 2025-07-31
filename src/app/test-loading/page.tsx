@@ -52,7 +52,7 @@ export default function TestLoading() {
             </div>
             
             <div className="text-white/30 text-sm">
-              <p>© 2025 JUNIOR X JBEL</p>
+              <p>© 2025 JUNIOR X THEGD33</p>
             </div>
           </div>
         </div>

@@ -290,14 +290,14 @@ export default function HomePage() {
               
               {/* Animation de particules */}
               <div className="flex justify-center gap-3 mb-8">
-                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-bounce shadow-lg shadow-yellow-400/50" style={{ animationDelay: '0ms' }}></div>
-                <div className="w-3 h-3 bg-orange-500 rounded-full animate-bounce shadow-lg shadow-orange-500/50" style={{ animationDelay: '200ms' }}></div>
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce shadow-lg shadow-red-500/50" style={{ animationDelay: '400ms' }}></div>
+                <div className="w-3 h-3 bg-white rounded-full animate-bounce shadow-lg shadow-white/50" style={{ animationDelay: '0ms' }}></div>
+                <div className="w-3 h-3 bg-gray-300 rounded-full animate-bounce shadow-lg shadow-gray-300/50" style={{ animationDelay: '200ms' }}></div>
+                <div className="w-3 h-3 bg-black rounded-full animate-bounce shadow-lg shadow-black/50" style={{ animationDelay: '400ms' }}></div>
               </div>
               
               {/* Footer */}
               <div className="text-white text-sm font-medium drop-shadow-md">
-                <p>© 2025 JUNIOR X JBEL</p>
+                <p>© 2025 JUNIOR X THEGD33</p>
               </div>
             </div>
           </div>
