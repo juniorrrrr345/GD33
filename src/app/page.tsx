@@ -247,14 +247,14 @@ export default function HomePage() {
               {/* Cercle animé avec image de fond */}
               <div className="w-48 h-48 mx-auto mb-8 relative animate-float">
                 <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-                  {backgroundImage && (
+                  {settings?.backgroundImage && (
                     <img 
-                      src={backgroundImage} 
+                      src={settings.backgroundImage} 
                       alt="Background" 
                       className="w-full h-full object-cover"
                     />
                   )}
-                  {!backgroundImage && (
+                  {!settings?.backgroundImage && (
                     <div className="w-full h-full bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600"></div>
                   )}
                 </div>
