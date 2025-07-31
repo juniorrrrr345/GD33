@@ -237,19 +237,36 @@ export default function HomePage() {
               
               {/* Titre avec effet néon et ombre */}
               <h1 className="text-5xl sm:text-7xl font-black mb-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-transparent bg-clip-text animate-pulse drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-                JBEL INDUSTRY
+                THEGD.33
               </h1>
               
               <p className="text-2xl text-white mb-8 font-semibold drop-shadow-lg">
                 Préparation en cours...
               </p>
               
+              {/* Cercle animé avec image de fond */}
+              <div className="w-48 h-48 mx-auto mb-8 relative animate-float">
+                <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+                  {backgroundImage && (
+                    <img 
+                      src={backgroundImage} 
+                      alt="Background" 
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  {!backgroundImage && (
+                    <div className="w-full h-full bg-gradient-to-br from-yellow-500 via-orange-500 to-red-600"></div>
+                  )}
+                </div>
+                <div className="absolute inset-0 rounded-full border-4 border-white/20 animate-spin-slow"></div>
+              </div>
+              
               {/* Nouvelle barre de chargement 3D */}
               <div className="w-80 max-w-full mx-auto mb-8">
                 <div className="h-4 bg-white/20 rounded-full overflow-hidden border border-white/40 shadow-inner">
                   <div className="h-full bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 rounded-full shadow-lg animate-loading-bar"></div>
                 </div>
-                <div className="mt-2 text-sm text-white font-medium drop-shadow-md">Chargement...</div>
+                <div className="mt-2 text-sm text-white font-medium drop-shadow-md">THEGD.33</div>
               </div>
               
               {/* Animation de particules */}
