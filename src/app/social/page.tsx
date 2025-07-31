@@ -59,7 +59,7 @@ export default async function SocialPage() {
         <div className="pt-12 sm:pt-14">
           <div className="h-4 sm:h-6"></div>
           
-          <main className="pt-4 pb-32 sm:pb-36 px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl mx-auto">
+          <main className="pt-4 pb-40 sm:pb-44 px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl mx-auto">
             {/* Titre de la page avec style boutique */}
             <div className="text-center mb-8 sm:mb-12">
               <h1 className="shop-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-3">
