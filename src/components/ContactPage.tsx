@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 
 interface ContactPageProps {
   content: string;
@@ -11,7 +12,10 @@ interface ContactPageProps {
   }>;
 }
 
-export default function ContactPage({ content, whatsappLink, socialLinks }: ContactPageProps) {
+export default function ContactPage({ content: initialContent, whatsappLink: initialWhatsappLink, socialLinks: initialSocialLinks }: ContactPageProps) {
+  const [content, setContent] = useState(initialContent);
+  const [whatsappLink, setWhatsappLink] = useState(initialWhatsappLink);
+  const [socialLinks, setSocialLinks] = useState(initialSocialLinks);
   const parseMarkdown = (text: string) => {
     return text
       .replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">$1</h1>')
@@ -25,6 +29,46 @@ export default function ContactPage({ content, whatsappLink, socialLinks }: Cont
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '<br/>');
   };
+
+  useEffect(() => {
+    // Écouter les mises à jour de la page contact
+    const handlePageUpdate = (event: CustomEvent) => {
+      if (event.detail.page === 'contact') {
+        console.log('🔄 Mise à jour de la page Contact détectée');
+        setContent(event.detail.data.content || '');
+      }
+    };
+
+    // Écouter les mises à jour des paramètres (pour WhatsApp)
+    const handleSettingsUpdate = (event: CustomEvent) => {
+      if (event.detail.whatsappLink) {
+        setWhatsappLink(event.detail.whatsappLink);
+      }
+    };
+
+    // Écouter les mises à jour des réseaux sociaux
+    const handleSocialLinksUpdate = () => {
+      const savedLinks = localStorage.getItem('socialLinks');
+      if (savedLinks) {
+        try {
+          const links = JSON.parse(savedLinks);
+          setSocialLinks(links.filter((link: any) => link.isActive));
+        } catch (error) {
+          console.error('Erreur lecture socialLinks:', error);
+        }
+      }
+    };
+
+    window.addEventListener('pageUpdated' as any, handlePageUpdate as any);
+    window.addEventListener('settingsUpdated' as any, handleSettingsUpdate as any);
+    window.addEventListener('socialLinksUpdated' as any, handleSocialLinksUpdate as any);
+
+    return () => {
+      window.removeEventListener('pageUpdated' as any, handlePageUpdate as any);
+      window.removeEventListener('settingsUpdated' as any, handleSettingsUpdate as any);
+      window.removeEventListener('socialLinksUpdated' as any, handleSocialLinksUpdate as any);
+    };
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-8 pb-40 max-w-4xl">

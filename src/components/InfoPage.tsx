@@ -1,10 +1,12 @@
 'use client';
+import { useState, useEffect } from 'react';
 
 interface InfoPageProps {
   content: string;
 }
 
-export default function InfoPage({ content }: InfoPageProps) {
+export default function InfoPage({ content: initialContent }: InfoPageProps) {
+  const [content, setContent] = useState(initialContent);
   const parseMarkdown = (text: string) => {
     return text
       .replace(/^# (.+)$/gm, '<h1 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">$1</h1>')
@@ -18,6 +20,33 @@ export default function InfoPage({ content }: InfoPageProps) {
       .replace(/\n\n/g, '<br/><br/>')
       .replace(/\n/g, '<br/>');
   };
+
+  useEffect(() => {
+    // Écouter les mises à jour de la page info
+    const handlePageUpdate = (event: CustomEvent) => {
+      if (event.detail.page === 'info') {
+        console.log('🔄 Mise à jour de la page Info détectée');
+        setContent(event.detail.data.content || '');
+      }
+    };
+
+    // Charger depuis localStorage si disponible
+    const savedPage = localStorage.getItem('page_info');
+    if (savedPage) {
+      try {
+        const pageData = JSON.parse(savedPage);
+        setContent(pageData.content || '');
+      } catch (error) {
+        console.error('Erreur lecture localStorage:', error);
+      }
+    }
+
+    window.addEventListener('pageUpdated' as any, handlePageUpdate as any);
+
+    return () => {
+      window.removeEventListener('pageUpdated' as any, handlePageUpdate as any);
+    };
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-8 pb-40 max-w-4xl">

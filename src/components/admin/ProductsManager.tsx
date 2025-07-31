@@ -335,6 +335,16 @@ export default function ProductsManager() {
           // Invalider le cache côté client
           const cacheResponse = await fetch('/api/cache/invalidate', { method: 'POST' });
           console.log('🔄 Cache invalidé:', cacheResponse.ok);
+          
+          // Recharger les produits
+          await loadProducts();
+          
+          // Mettre à jour le localStorage pour synchronisation instantanée
+          const products = await fetch('/api/products').then(res => res.json());
+          localStorage.setItem('products', JSON.stringify(products));
+          
+          // Émettre un événement pour notifier les autres composants
+          window.dispatchEvent(new CustomEvent('productsUpdated', { detail: products }));
         } catch (error) {
           console.error('Erreur invalidation cache:', error);
         }
@@ -411,6 +421,21 @@ export default function ProductsManager() {
         }, 3000);
 
         console.log('✅ Produit supprimé avec succès:', productId);
+        
+        // Synchronisation instantanée
+        try {
+          // Invalider le cache
+          await fetch('/api/cache/invalidate', { method: 'POST' });
+          
+          // Mettre à jour le localStorage
+          const updatedProducts = products.filter(p => p._id !== productId);
+          localStorage.setItem('products', JSON.stringify(updatedProducts));
+          
+          // Émettre un événement pour notifier les autres composants
+          window.dispatchEvent(new CustomEvent('productsUpdated', { detail: updatedProducts }));
+        } catch (error) {
+          console.error('Erreur synchronisation:', error);
+        }
       } else {
         // Erreur côté serveur
         const errorData = await response.json().catch(() => ({ error: 'Erreur inconnue' }));

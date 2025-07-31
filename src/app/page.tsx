@@ -184,11 +184,27 @@ export default function HomePage() {
       loadFreshData();
     }, 1000); // 1 seconde pour synchronisation instantanée
     
-    // Écouter les changements de paramètres
+    // Écouter les changements de paramètres et de produits
+    const handleProductsUpdate = (event: CustomEvent) => {
+      console.log('🔄 Mise à jour des produits détectée');
+      loadFreshData();
+    };
+    
+    const handleSettingsUpdate = (event: CustomEvent) => {
+      console.log('🔄 Mise à jour des paramètres détectée');
+      if (event.detail) {
+        setSettings(event.detail);
+      }
+    };
+    
+    window.addEventListener('productsUpdated' as any, handleProductsUpdate as any);
+    window.addEventListener('settingsUpdated' as any, handleSettingsUpdate as any);
     
     return () => {
       clearTimeout(loadingTimeout);
       clearInterval(interval);
+      window.removeEventListener('productsUpdated' as any, handleProductsUpdate as any);
+      window.removeEventListener('settingsUpdated' as any, handleSettingsUpdate as any);
     };
   }, []);
 
