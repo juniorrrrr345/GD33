@@ -123,7 +123,7 @@ export default function OrdersManager() {
             
             <div className="mt-3 space-y-1">
               <p className="text-xs sm:text-sm text-gray-400">
-                Ce lien sera utilisé dans les boutons "Commander via WhatsApp"
+                Ce lien sera utilisé dans les boutons "Commander"
               </p>
               <p className="text-xs text-gray-500">
                 Format: https://wa.me/[code pays][numéro]
