@@ -15,6 +15,31 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState('menu');
   const router = useRouter();
   
+  // Restaurer la position de défilement au chargement
+  useEffect(() => {
+    if (!selectedProduct) {
+      const savedPosition = sessionStorage.getItem('scrollPosition');
+      const lastViewedProductId = sessionStorage.getItem('lastViewedProductId');
+      
+      if (savedPosition && lastViewedProductId) {
+        // Attendre que les produits soient chargés
+        const checkAndScroll = () => {
+          const productElement = document.querySelector(`[data-product-id="${lastViewedProductId}"]`);
+          if (productElement) {
+            window.scrollTo({
+              top: parseInt(savedPosition),
+              behavior: 'instant'
+            });
+          }
+        };
+        
+        // Vérifier immédiatement et après un court délai
+        checkAndScroll();
+        setTimeout(checkAndScroll, 500);
+      }
+    }
+  }, [selectedProduct, products]);
+  
   // Précharger les autres pages pour navigation instantanée
   useEffect(() => {
     router.prefetch('/info');
@@ -336,7 +361,19 @@ export default function HomePage() {
             {selectedProduct ? (
               <ProductDetail 
                 product={selectedProduct} 
-                onClose={() => setSelectedProduct(null)} 
+                onClose={() => {
+                  setSelectedProduct(null);
+                  // Restaurer la position de défilement après fermeture
+                  setTimeout(() => {
+                    const savedPosition = sessionStorage.getItem('scrollPosition');
+                    if (savedPosition) {
+                      window.scrollTo({
+                        top: parseInt(savedPosition),
+                        behavior: 'smooth'
+                      });
+                    }
+                  }, 100);
+                }} 
               />
             ) : (
               <div className="pt-12 sm:pt-14">
@@ -367,7 +404,13 @@ export default function HomePage() {
                       <ProductCard
                         key={product._id}
                         product={product}
-                        onClick={() => setSelectedProduct(product)}
+                        onClick={() => {
+                          // Sauvegarder la position de défilement et l'ID du produit
+                          const scrollPosition = window.scrollY;
+                          sessionStorage.setItem('scrollPosition', scrollPosition.toString());
+                          sessionStorage.setItem('lastViewedProductId', product._id);
+                          setSelectedProduct(product);
+                        }}
                       />
                     ))}
                   </div>
