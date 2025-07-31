@@ -248,8 +248,8 @@ export default function HomePage() {
           <div className="min-h-screen flex items-center justify-center p-4">
             <div className="text-center bg-black/60 backdrop-blur-md rounded-3xl p-8 sm:p-12 max-w-lg mx-auto border border-white/20">
               {/* Logo/Nom de la boutique */}
-              <div className="mb-8">
-                <h1 className="text-6xl sm:text-8xl font-black text-white drop-shadow-2xl animate-pulse">
+              <div className="mb-8 flex items-center justify-center">
+                <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-white drop-shadow-2xl animate-pulse text-center">
                   THEGD.33
                 </h1>
               </div>

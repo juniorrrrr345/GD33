@@ -128,7 +128,7 @@ export default async function SocialPage() {
                   className="inline-flex items-center space-x-3 bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold transition-all duration-200 transform hover:scale-105 shadow-lg"
                 >
                   <span className="text-xl sm:text-2xl">💬</span>
-                  <span>Contactez-nous sur WhatsApp</span>
+                                      <span>Contactez-nous</span>
                 </a>
               </div>
             )}

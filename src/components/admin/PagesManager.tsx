@@ -98,6 +98,13 @@ export default function PagesManager() {
       if (result.success) {
         setSaveStatus('✅ Sauvegardé avec succès !');
         
+        // Sauvegarder dans localStorage pour affichage instantané
+        const pagesData = { [activeTab]: page };
+        localStorage.setItem(`page_${activeTab}`, JSON.stringify(page));
+        
+        // Émettre un événement pour mise à jour instantanée
+        window.dispatchEvent(new CustomEvent('pageUpdated', { detail: { page: activeTab, data: page } }));
+        
         // Invalider le cache pour forcer le rechargement
         try {
           await fetch('/api/cache/invalidate', { method: 'POST' });
